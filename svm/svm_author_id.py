@@ -33,8 +33,15 @@ from sklearn.svm import LinearSVC
 
 clf = SVC(kernel = "linear")
 
+t0 = time()
+
 clf.fit(features_train,labels_train)
+print "SVC training time: ", round(time()-t0,3)
+
+t1 = time()
+
 pred = clf.predict(features_test)
+print "SVC prediction time: ", round(time()-t1,3)
 
 
 from sklearn.metrics import accuracy_score
