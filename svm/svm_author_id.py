@@ -31,7 +31,7 @@ import pylab as pl
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
 
-clf = SVC(kernel = "linear")
+clf = SVC(kernel = "rbf")
 
 t0 = time()
 
