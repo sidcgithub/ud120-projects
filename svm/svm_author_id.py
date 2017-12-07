@@ -52,8 +52,13 @@ print "SVC prediction time: ", round(time()-t1,3)
 from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred,labels_test)
 print "SVM accuracy: ",acc
-
-
+print(pred.sum)
+count = 0
+chrisCount = 0;
+while (count<len(pred)):
+    chrisCount = chrisCount+pred[count]
+    count = count+1
+print(chrisCount)
 c = 1
 features_train = features_train[:len(features_train)/100]
 labels_train = labels_train[:len(labels_train)/100] 
