@@ -31,27 +31,35 @@ import pylab as pl
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
 
-clf = SVC(kernel = "rbf", C= 1.0)
 
-t0 = time()
-
-##Reducing dataset to 1%
-
-features_train = features_train[:len(features_train)/100] 
+c = 1
+features_train = features_train[:len(features_train)/100]
 labels_train = labels_train[:len(labels_train)/100] 
 
-clf.fit(features_train,labels_train)
-print "SVC training time: ", round(time()-t0,3)
+while(c<=10000):
 
-t1 = time()
+    clf = SVC(kernel = "rbf", C= c)
+    print "C value : ", c
 
-pred = clf.predict(features_test)
-print "SVC prediction time: ", round(time()-t1,3)
+    t0 = time()
+
+    ##Reducing dataset to 1%
+
+ 
+
+    clf.fit(features_train,labels_train)
+    print "SVC training time: ", round(time()-t0,3)
+
+    t1 = time()
+
+    pred = clf.predict(features_test)
+    print "SVC prediction time: ", round(time()-t1,3)
 
 
-from sklearn.metrics import accuracy_score
-acc = accuracy_score(pred,labels_test)
-print "SVM accuracy: ",acc
+    from sklearn.metrics import accuracy_score
+    acc = accuracy_score(pred,labels_test)
+    print "SVM accuracy: ",acc
+    c = c*10
 
 #########################################################
 
